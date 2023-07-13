@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "181860219871",
+    "project_id": "travaler-dbd9c",
+    "storage_bucket": "travaler-dbd9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181860219871:android:2e6e426587bba1b01ba26a",
+        "android_client_info": {
+          "package_name": "com.example.travenor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181860219871-uroou5moc9kii1c05gqpj6rj56lp8a8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6XGi3oY2bMejbEyAzLk6xvG006CokaD4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181860219871-uroou5moc9kii1c05gqpj6rj56lp8a8m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

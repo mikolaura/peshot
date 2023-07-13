@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travenor/controllers/authContoller.dart';
 import 'package:travenor/views/widgets/custom_text_field.dart';
 import 'package:travenor/views/widgets/mainButton.dart';
 
@@ -35,19 +36,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           body: ListView(
                 
-                  children: [SizedBox(
-                    height: double.maxFinite,
-                    child: Container(
-                      padding: EdgeInsets.all(12.0),
-                      child: Column(
+                  
 
-                        mainAxisSize: MainAxisSize.min,
-                        // mainAxisAlignment: MainAxisAlignment.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          //TODO:
-                        
-                          //Text sign up
+                          Padding(padding: EdgeInsets.all(12)
+                          ,child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                             //Text sign up
                           Text(
                             "Sign Up",
                             style: GoogleFonts.poppins(
@@ -59,24 +55,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: (MediaQuery.of(context).size.height) * 0.15,
                           ),
                           CustomTextField(controller: _firstNameController, hintText: "First Name", isObscure: false),
-                          const SizedBox(height: 5,),
+                          const SizedBox(height: 15,),
                           CustomTextField(controller: _lastNameController, hintText: "Last Name", isObscure: false),
-                          const SizedBox(height: 5,),
+                          const SizedBox(height: 15,),
                           CustomTextField(controller: _emailController, hintText: "Email", isObscure: false),
-                          const SizedBox(height:5,),
+                          const SizedBox(height: 15,),
                           CustomTextField(controller: _passwordController, hintText: "Password", isObscure: true),
                           SizedBox(
                             height: (MediaQuery.of(context).size.height) * 0.15,
                           ),
                           //Custom Button
-                          Center(child: MainButton(text: 'Sign Up', color: Theme.of(context).primaryColor))
+                          GestureDetector(onTap: ()=>AuthContoller().signUp(_firstNameController.text, _lastNameController.text, _emailController.text, _passwordController.text),child: Center(child: MainButton(text: 'Sign Up', color: Theme.of(context).primaryColor))),
+                          const SizedBox(height: 20,)
+                          ]),),
+                          
+                          
+                        
+                         
                         ],
                       ),
-                    ),
-                  ),
-]              ),
-          
-            
-          );
+                    );
+
   }
 }
