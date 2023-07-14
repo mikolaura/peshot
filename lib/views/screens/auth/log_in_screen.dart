@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:travenor/controllers/authContoller.dart';
+import 'package:travenor/views/widgets/custom_text_field.dart';
+import 'package:travenor/views/widgets/mainButton.dart';
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
 
@@ -7,8 +11,61 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  } 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+          backgroundColor: Color.fromRGBO(239, 239, 239, 1),
+          appBar: AppBar(
+            backgroundColor: Color.fromRGBO(239, 239, 239, 1),
+            elevation: 0,
+          ),
+          body: ListView(
+                
+                  
+
+                        children: [
+                          Padding(padding: EdgeInsets.all(12)
+                          ,child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                             //Text sign up
+                          Text(
+                            "Sign Up",
+                            style: GoogleFonts.poppins(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                         
+                          //Custom TextField
+                          SizedBox(
+                            height: (MediaQuery.of(context).size.height) * 0.15,
+                          ),
+                          
+                          CustomTextField(controller: _emailController, hintText: "Email", isObscure: false),
+                          const SizedBox(height: 15,),
+                          CustomTextField(controller: _passwordController, hintText: "Password", isObscure: true),
+                          SizedBox(
+                            height: (MediaQuery.of(context).size.height) * 0.15,
+                          ),
+                          //Custom Button
+                          GestureDetector(onTap: ()=>AuthContoller().logIn(_emailController.text, _passwordController.text),child: Center(child: MainButton(text: 'Log In', color: Theme.of(context).primaryColor))),
+                          const SizedBox(height: 20,)
+                          ]),),
+                          
+                          
+                        
+                         
+                        ],
+                      ),
+                    );
+
   }
 }

@@ -24,6 +24,13 @@ class AuthContoller extends GetxController {
       Get.offAll(()=>Home());
     }
   }
+  void logIn(String email, String password){
+    try{
+    FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password); 
+    }catch(e){
+      Get.snackbar('error on log in', e.toString());
+    }
+  }
   void signUp(
       String firstName, String lastName, String email, String password) async {
     try{

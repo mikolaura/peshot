@@ -25,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _firstNameController.dispose();
     _lastNameController.dispose();
     _passwordController.dispose();
-  }
+  } 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
