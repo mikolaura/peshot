@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:travenor/views/screens/explore_screen.dart';
 import 'package:travenor/views/screens/profile_screen.dart';
 
 import 'add_screen.dart';
@@ -13,13 +14,22 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _index = 0;
-  var pages = [
-    HomeScreen(),
-    AddScreen(),
-    ProfileScreen()
-  ];
+  void change(){
+    LevelUp(){
+    setState(() {
+        _index = 3;
+      });
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
+    var pages = [
+    HomeScreen(change: change),
+    AddScreen(),
+    ProfileScreen(),
+    ExploreScreen(controller: TextEditingController(),)
+  ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(onTap: (int index){
         setState(() {
