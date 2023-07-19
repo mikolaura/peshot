@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
     HomeScreen(change: change),
     AddScreen(),
     ProfileScreen(),
-    ExploreScreen(controller: TextEditingController(),)
+    // ExploreScreen(controller: TextEditingController(),)
   ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(onTap: (int index){

@@ -5,12 +5,13 @@ class CustomTextField extends StatelessWidget {
   TextEditingController controller;
   String hintText;
   bool isObscure;
-
+  TextInputType type;
   CustomTextField({
     Key? key,
     required this.controller,
     required this.hintText,
     required this.isObscure,
+    this.type =  TextInputType.name
   }) : super(key: key);
 
   @override
@@ -31,6 +32,7 @@ class CustomTextField extends StatelessWidget {
             borderSide: BorderSide.none
           )
         ),
+        keyboardType: type,
         obscureText: isObscure,
         obscuringCharacter: '*',
       ),

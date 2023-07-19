@@ -17,6 +17,11 @@ class ExploreTextField extends StatefulWidget {
 class _ExploreTextFieldState extends State<ExploreTextField> {
   @override
   Widget build(BuildContext context) {
+    @override
+    void dispose() {
+      widget.controller.dispose();
+      super.dispose();
+    }
     return Container(
             height: 50,
             decoration: BoxDecoration(

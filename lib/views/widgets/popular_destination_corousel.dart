@@ -1,25 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:travenor/models/hotelModel.dart';
 import 'package:travenor/models/placeModel.dart';
 import 'package:travenor/models/popularDestination.dart';
+import 'package:travenor/views/screens/explore_screen.dart';
 
 class PopularDestinationCorusel extends StatefulWidget {
-  const PopularDestinationCorusel({super.key});
+  List<HotelModel> hotels;
+   PopularDestinationCorusel({
+    Key? key,
+    required this.hotels,
+  }) : super(key: key);
 
   @override
   State<PopularDestinationCorusel> createState() => _PopularDestinationCoruselState();
 }
 
 class _PopularDestinationCoruselState extends State<PopularDestinationCorusel> {
+  
   @override
   Widget build(BuildContext context) {
+    for(int i=0; i<widget.hotels.length;i++){
+      print(
+        'hi'
+      );
+      print(widget.hotels[i].hotelCity);
+    }
     return Container(
       height: 211,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: popularDestination.length,
           itemBuilder: (context, index) {
-            return Container(
+            TextEditingController textEditingController = TextEditingController.fromValue(TextEditingValue(text: popularDestination[index].nameOfCountry));
+            return GestureDetector(
+              onTap: (){
+                Get.off(()=>ExploreScreen(controller: textEditingController, hotels: widget.hotels,isCountry: true,name: popularDestination[index].nameOfCountry,));
+                
+              },
+              child:Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Stack(
                 children: [
@@ -57,6 +78,7 @@ class _PopularDestinationCoruselState extends State<PopularDestinationCorusel> {
                   )
                 ],
               ),
+              )
             );
           }),
     );

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travenor/controllers/homeContoller.dart';
 
 import 'package:travenor/views/screens/explore_screen.dart';
 import 'package:travenor/views/widgets/explore_text_field.dart';
@@ -19,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> { 
+  HomeController homeController = Get.put(HomeController());
   TextEditingController controller = TextEditingController();
   @override
   void dispose() {
@@ -34,13 +36,13 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           ExploreTextField(controller: controller,onTap: (){
             print("Hii");
-            Get.off(()=>ExploreScreen(controller: controller));
+            Get.off(()=>ExploreScreen(controller: controller,hotels: homeController.videoList,name: controller.text,));
           },),
           const SizedBox(height: 50,),
-          PlaceContoller(),
+          PlaceContoller(hotels: homeController.videoList,),
           const SizedBox(height: 50,),
           Text('Popular Destination', style: GoogleFonts.montserrat(fontSize: 19, fontWeight: FontWeight.bold, color: Colors.black )),
-          PopularDestinationCorusel()
+          PopularDestinationCorusel(hotels: homeController.videoList,)
         ],
       ),
     );
