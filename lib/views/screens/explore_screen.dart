@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:travenor/controllers/homeContoller.dart';
 
 import 'package:travenor/models/hotelModel.dart';
 import 'package:travenor/views/screens/home.dart';
@@ -33,6 +34,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    HomeController homeController = Get.put(HomeController());
     late List<HotelModel> filteredHotels;
     for(int i=0; i<widget.hotels.length;i++){
       print(
@@ -41,10 +44,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
       print(widget.hotels[i].hotelCity);
     }
     if(!widget.isCountry){
-  filteredHotels = widget.name.isEmpty ? widget.hotels : (widget.hotels.where((element) => element.hotelCity == widget.name)).toList();
+  filteredHotels = widget.name.isEmpty ? homeController.videoList : (homeController.videoList.where((element) => element.hotelCity == widget.name)).toList();
     }else{
 
-  filteredHotels = widget.name.isEmpty ? widget.hotels : (widget.hotels.where((element) => element.hotelCountry == widget.name)).toList();
+  filteredHotels = widget.name.isEmpty ? homeController.videoList : (homeController.videoList.where((element) => element.hotelCountry == widget.name)).toList();
     }
     return Scaffold(
       appBar: AppBar(

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travenor/controllers/authContoller.dart';
+import 'package:travenor/controllers/homeContoller.dart';
 import 'package:travenor/views/screens/start_screen.dart';
 
 import 'firebase_options.dart';
@@ -10,7 +11,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  ).then((value) => Get.put(AuthContoller()));
+  ).then((value){ Get.put(AuthContoller());
+  Get.put(HomeController());});
 
   runApp(const MyApp());
 }
